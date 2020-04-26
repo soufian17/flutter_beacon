@@ -135,12 +135,10 @@ class FlutterBeacon {
   ///
   /// This will fires [RangingResult] whenever the iBeacons in range.
   Stream<RangingResult> ranging(List<Region> regions) {
-    if (_onRanging == null) {
-      final list = regions.map((region) => region.toJson).toList();
-      _onRanging = _rangingChannel
-          .receiveBroadcastStream(list)
-          .map((dynamic event) => RangingResult.from(event));
-    }
+    final list = regions.map((region) => region.toJson).toList();
+    _onRanging = _rangingChannel
+        .receiveBroadcastStream(list)
+        .map((dynamic event) => RangingResult.from(event));
     return _onRanging;
   }
 
@@ -148,12 +146,10 @@ class FlutterBeacon {
   ///
   /// This will fires [MonitoringResult] whenever the iBeacons in range.
   Stream<MonitoringResult> monitoring(List<Region> regions) {
-    if (_onMonitoring == null) {
-      final list = regions.map((region) => region.toJson).toList();
-      _onMonitoring = _monitoringChannel
-          .receiveBroadcastStream(list)
-          .map((dynamic event) => MonitoringResult.from(event));
-    }
+    final list = regions.map((region) => region.toJson).toList();
+    _onMonitoring = _monitoringChannel
+        .receiveBroadcastStream(list)
+        .map((dynamic event) => MonitoringResult.from(event));
     return _onMonitoring;
   }
 
